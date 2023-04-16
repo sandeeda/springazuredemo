@@ -11,8 +11,10 @@ public class SpringAzureDemoApplication {
 
 	@GetMapping("/message")
 	public String message() {
-		return "Congrats";
+	    String htmlContent = "<html><body><h1>Congrats</h1><p>You have successfully deployed your Spring Boot application to Azure.</p></body></html>";
+	    return htmlContent;
 	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(SpringAzureDemoApplication.class, args);
 	}
