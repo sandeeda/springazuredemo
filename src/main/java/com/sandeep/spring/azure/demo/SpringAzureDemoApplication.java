@@ -15,7 +15,7 @@ public class SpringAzureDemoApplication {
 	    return htmlContent;
 	}
 
-	@GetMapping("/")
+	@GetMapping("/mortgage")
 	public String calculateMortgage() {
 		 String htmlContent = "<html>\n" +
                  "<head>\n" +
@@ -65,6 +65,102 @@ public class SpringAzureDemoApplication {
                  "</html>";
 	    return htmlContent;
 	}
+	
+	@GetMapping("/")
+	public String employeeMgmt() {
+		String htmlContent = "<!DOCTYPE html>\n"
+				+ "<html>\n"
+				+ "<head>\n"
+				+ "    <title>Employee Management</title>\n"
+				+ "    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css\">\n"
+				+ "</head>\n"
+				+ "<body>\n"
+				+ "    <div class=\"container mt-5\">\n"
+				+ "        <h1>Add Employee</h1>\n"
+				+ "        <form>\n"
+				+ "            <div class=\"form-group\">\n"
+				+ "                <label for=\"firstName\">First Name:</label>\n"
+				+ "                <input type=\"text\" class=\"form-control\" id=\"firstName\" name=\"firstName\" required>\n"
+				+ "            </div>\n"
+				+ "            <div class=\"form-group\">\n"
+				+ "                <label for=\"lastName\">Last Name:</label>\n"
+				+ "                <input type=\"text\" class=\"form-control\" id=\"lastName\" name=\"lastName\" required>\n"
+				+ "            </div>\n"
+				+ "            <div class=\"form-group\">\n"
+				+ "                <label for=\"email\">Email:</label>\n"
+				+ "                <input type=\"email\" class=\"form-control\" id=\"email\" name=\"email\" required>\n"
+				+ "            </div>\n"
+				+ "            <button type=\"submit\" class=\"btn btn-primary\">Add Employee</button>\n"
+				+ "        </form>\n"
+				+ "        <hr>\n"
+				+ "        <h1>Employee List</h1>\n"
+				+ "        <table class=\"table\">\n"
+				+ "            <thead>\n"
+				+ "                <tr>\n"
+				+ "                    <th>First Name</th>\n"
+				+ "                    <th>Last Name</th>\n"
+				+ "                    <th>Email</th>\n"
+				+ "                </tr>\n"
+				+ "            </thead>\n"
+				+ "            <tbody id=\"employeeTableBody\">\n"
+				+ "            </tbody>\n"
+				+ "        </table>\n"
+				+ "    </div>\n"
+				+ "\n"
+				+ "    <script>\n"
+				+ "        var employees = [];\n"
+				+ "\n"
+				+ "        function addEmployee() {\n"
+				+ "            var firstName = document.getElementById('firstName').value;\n"
+				+ "            var lastName = document.getElementById('lastName').value;\n"
+				+ "            var email = document.getElementById('email').value;\n"
+				+ "\n"
+				+ "            employees.push({\n"
+				+ "                firstName: firstName,\n"
+				+ "                lastName: lastName,\n"
+				+ "                email: email\n"
+				+ "            });\n"
+				+ "\n"
+				+ "            updateEmployeeTable();\n"
+				+ "        }\n"
+				+ "\n"
+				+ "        function updateEmployeeTable() {\n"
+				+ "            var tableBody = document.getElementById('employeeTableBody');\n"
+				+ "            tableBody.innerHTML = '';\n"
+				+ "\n"
+				+ "            for (var i = 0; i < employees.length; i++) {\n"
+				+ "                var employee = employees[i];\n"
+				+ "\n"
+				+ "                var tr = document.createElement('tr');\n"
+				+ "\n"
+				+ "                var tdFirstName = document.createElement('td');\n"
+				+ "                tdFirstName.textContent = employee.firstName;\n"
+				+ "                tr.appendChild(tdFirstName);\n"
+				+ "\n"
+				+ "                var tdLastName = document.createElement('td');\n"
+				+ "                tdLastName.textContent = employee.lastName;\n"
+				+ "                tr.appendChild(tdLastName);\n"
+				+ "\n"
+				+ "                var tdEmail = document.createElement('td');\n"
+				+ "                tdEmail.textContent = employee.email;\n"
+				+ "                tr.appendChild(tdEmail);\n"
+				+ "\n"
+				+ "                tableBody.appendChild(tr);\n"
+				+ "            }\n"
+				+ "        }\n"
+				+ "\n"
+				+ "        document.querySelector('form').addEventListener('submit', function(e) {\n"
+				+ "            e.preventDefault();\n"
+				+ "            addEmployee();\n"
+				+ "        });\n"
+				+ "    </script>\n"
+				+ "</body>\n"
+				+ "</html>\n"
+				+ "";
+		return htmlContent;
+	}
+	
+	
 	@GetMapping("/tax")
 	public String calculateTax() {
 		String htmlContent = "<html>\n" +
